@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Roll Dice Game</title>
+<link rel="icon" href="image/rollDiceGameLogo.jpg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="rollDicesGame.css">
+
+</head>
+<body>
+<div class="container" >
+  <div class="title">Roll Dice Game</div>
+  <div class="winner" id="winner"></div>
+  <div class="players">
+    <div class="computer">Computer</div>
+    <div class="player">Player</div>
+  </div>
+  <div class="dice-container">
+    <img src="image/dice-6.png" alt="Dice Computer" class="dice1" id="diceComputer">
+    <img src="image/dice-6.png" alt="Dice Player" class="dice2" id="dicePlayer">
+  </div>
+  <div class="scores">
+    <div id="computerScore">Computer's Score: 0</div>    
+    <div id="playerScore">Player's Score: 0</div>
+  </div>
+  <div class="buttons">
+    <button class="button1" id="rollButton" onclick="rollDice()">Roll Dice</button>
+    <button class="button2" id="restartButton" onclick="restartGame()">Restart</button>
+  </div>
+</div>
+
+<script defer src="rollDicesGame.js"></script>
+</body>
+</html>

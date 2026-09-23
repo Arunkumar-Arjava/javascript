@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> BMI CALCULATOR</title>
+  <link rel="stylesheet" href="BMI.css">
+  <link rel="icon" href="https://play-lh.googleusercontent.com/wiLKNn9tyY-SiNWg_Pib1stLmZU9lYuadq-Y4ASfi7OtJzLDmDknUFcqejQjw4Sqjg">
+</head>
+<body>
+  <div id="bmi-container">
+    <h1>BMI CALCULATOR</h1>
+    <label for="weight">Weight (kg):</label>
+    <input type="number" id="weight" placeholder="Enter your weight" required>
+    <label for="height">Height (cm):</label>
+    <input type="number" id="height" placeholder="Enter your height" required>  
+    <input type="button" id="button" value="submit" onclick="calculateBMI()">
+    <p id="result"></p>  
+  </div>
+  <script src="BMI.js"></script>
+</body>
+</html>

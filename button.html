@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button type="button" class="Green" onclick="color('green')">Green</button>
+    <button type="button" class="Red" onclick="color('red')">Red</button>
+    <button type="button" id="Yellow" onclick="color('yellow')">Yellow</button>
+    <h1 class="head"></h1>
+</body>
+<script>
+
+    function color(value) {
+        document.body.style.backgroundColor = value
+        document.querySelector(".head").textContent = "your color is "+value
+    }
+</script>
+
+</html>

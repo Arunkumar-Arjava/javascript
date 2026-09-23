@@ -1,0 +1,49 @@
+body {    
+    font-family: Arial, sans-serif;    
+    display: flex;
+    justify-content: center;
+    margin-top: 8%;
+    background-image:url(https://hinduja-prod-assets.s3.ap-south-1.amazonaws.com/2022-03/BMI%20Mobile.png?VersionId=PEtyVlYuZGJn26AvVTdrZADTgPzf93jU);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  #bmi-container {
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(29, 28, 28, 0.1);
+    padding: 5%;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 19px;
+    
+  }
+
+  input {
+    width: 100%;
+    padding: 19px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    
+  }
+  #button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #899ba7;
+
+  }
+  #result {
+    margin-top: 20px;
+    font-weight: bold; 
+  } 

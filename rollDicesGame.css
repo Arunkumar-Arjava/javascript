@@ -1,0 +1,136 @@
+body {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 400;
+  height: 100vh;
+  color: #333;
+  background-image: linear-gradient(to top left, #753682 0%, #bf2e34 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+  .container {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 40px;
+    margin-right: 40%;
+    background-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
+    border-radius: 19px;
+  }
+
+  .title {
+    text-align: center;
+    font-family: sans-serif-black;
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .winner {
+    width: 411px;
+    height: 50px;
+    margin: 0 auto;
+    font-family: sans-serif-small-caps;
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+    padding-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  .players {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+
+  .player {
+    font-size: 25px;
+    color: #000000;
+    text-align: center;
+    padding-right: 13%;
+  }
+
+  .computer{
+    font-size: 25px;
+    color: #000000;
+    text-align: center;
+    padding-left: 10%;
+  }
+
+  #playerScore{
+    font-size: 25px;
+    color: #000000;
+    text-align: center;
+    padding-right: 4%;
+  }
+
+  #computerScore{
+    font-size: 25px;
+    color: #000000;
+    text-align: center;
+    padding-left: 4%;
+    
+  }
+
+  .dice-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .dice1 {
+    width: 147px;
+    height: 139px;
+    margin: 0 20px;
+  }
+  .dice2 {
+    width: 147px;
+    height: 139px;
+    margin: 0 20px;
+    padding-left: 30%;
+  }
+
+  .scores {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+
+  .score {
+    font-size: 25px;
+    color: #000000;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .button1 {
+    width: 227px;
+    height: 40px;
+    margin: 0 10px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 20px;
+    text-align: center;
+    margin-right: 10%;
+    margin-top: 5%;
+  }
+
+  .button2{
+    width: 227px;
+    height: 40px;
+    margin: 0 10px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 20px;
+    text-align: center;
+    margin-left: 10%;
+    margin-top: 5%;
+  }

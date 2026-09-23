@@ -1,0 +1,66 @@
+body {
+    background-image: url(https://manybackgrounds.com/images/hd/advanced-modern-calculator-on-a-work-desk-ekgg3z56dr6pt56g.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+.calculator {
+    width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: black;
+    border-radius: 4%;
+    margin-top: 10%;
+}
+
+.display {
+    height: 50px;
+    background-color: #f0f0f0;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: right;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 40px;
+
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.button {
+    flex: 1;
+    margin: 0 5px;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    background-color: #3498db;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .calculator {
+        margin-top: 70%;
+        width: 100%;
+    }
+
+    .row {
+        width: 100%;
+    }
+
+    .button {
+        width: 25%;
+        padding: 10px;
+    }
+
+}
