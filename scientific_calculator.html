@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -11,6 +11,7 @@
         integrity="sha512-BbVEDjbqdN3Eow8+empLMrJlxXRj5nEitiCAK5A1pUr66+jLVejo3PmjIaucRnjlB0P9R3rBUs3g5jXc8ti+fQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
+
 <body>
     <div class="calculator">
         <div class="display" id="display">0</div>
@@ -28,7 +29,7 @@
             <button class="button" id="nine" onclick="appendToDisplay(9)">9</button>
             <button class="button" id="division" onclick="operator('/')">/</button>
             <button class="button" id="squar" onclick="operator('cos(')">cos()</button>
-            <button class="button" id="squar" onclick="cube()">x<sup style="font-size: 15px;">3</sup></button>           
+            <button class="button" id="squar" onclick="cube()">x<sup style="font-size: 15px;">3</sup></button>
         </div>
         <div class="row">
             <button class="button" id="four" onclick="appendToDisplay(4)">4</button>
@@ -37,7 +38,7 @@
             <button class="button" id="multiple" onclick="operator('*')">*</button>
             <button class="button" id="squar" onclick="operator('sin(')">sin()</button>
             <button class="button" id="squar" onclick="powerOfTen()">x<sup style="font-size: 15px;">10</sup></button>
-           
+
         </div>
         <div class="row">
             <button class="button" id="one" onclick="appendToDisplay(1)">1</button>
@@ -54,8 +55,9 @@
             <button class="button" id="plus" onclick="operator('+')">+</button>
             <button class="button" id="squar" onclick="operator('log(')">log()</button>
             <button class="button" id="squar" onclick="pi()">π</button>
+        </div>
     </div>
     <script src="calculator.js"></script>
 </body>
 
-</html> 
+</html>

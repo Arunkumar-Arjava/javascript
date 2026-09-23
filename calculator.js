@@ -1,84 +1,163 @@
 let display = document.getElementById('display');
-let dotClickable = true;
+let cursorPos = null; // tracks insert position when inside function brackets
+
+const TRIG_FUNCS = ['sin(', 'cos(', 'tan(', 'log('];
+
 function appendToDisplay(value) {
+    if (display.textContent === 'Syntax Error') {
+        display.textContent = value === '.' ? '0.' : value;
+        cursorPos = null;
+        return;
+    }
+
+    if (cursorPos !== null) {
+        let text = display.textContent;
+        display.textContent = text.slice(0, cursorPos) + value + text.slice(cursorPos);
+        cursorPos += String(value).length;
+        return;
+    }
+
     if (value === '.') {
-        display.textContent += value
+        if (display.textContent === '0') {
+            display.textContent = '0.';
+        } else {
+            display.textContent += value;
+        }
+        return;
     }
-    else if (display.textContent === '0' || display.textContent === 'Syntax Error') {
+
+    if (display.textContent === '0') {
         display.textContent = value;
-    }
-    else {
+    } else {
         display.textContent += value;
     }
 }
 
-function pi(){
-    let pi_value = 3.14159265359;
-    if (display.textContent === '.') {
-        display.textContent += pi_value
-    }
-    else if (display.textContent === '0' || display.textContent === 'Syntax Error') {
+function pi() {
+    let pi_value = Math.PI;
+    if (display.textContent === '0' || display.textContent === 'Syntax Error') {
         display.textContent = pi_value;
-    }
-    else {
+        cursorPos = null;
+    } else if (cursorPos !== null) {
+        let text = display.textContent;
+        display.textContent = text.slice(0, cursorPos) + pi_value + text.slice(cursorPos);
+        cursorPos += String(pi_value).length;
+    } else {
         display.textContent += pi_value;
     }
 }
 
-function powerOfTen(){
-    let userInput = display.textContent;
-    userInput = userInput*userInput*userInput*userInput*userInput*userInput*userInput*userInput*userInput*userInput*userInput;
-    display.textContent = userInput;
+function powerOfTen() {
+    applyScientificOperation('^10');
 }
 
 function cancel() {
     display.textContent = 0;
-    dotClickable = true;
+    cursorPos = null;
 }
 function root() {
-    let userInput = display.textContent;
-    let result = Math.sqrt(userInput);
-    display.textContent = result;
+    applyScientificOperation('sqrt');
 }
-function cube(){
-    let userInput = display.textContent;
-    userInput = userInput * userInput*userInput;
-    display.textContent = userInput;
-
+function cube() {
+    applyScientificOperation('^3');
 }
 function squar() {
-    let userInput = display.textContent;
-    userInput = userInput * userInput;
-    display.textContent = userInput;
+    applyScientificOperation('^2');
+}
+function applyScientificOperation(operation) {
+    try {
+        const expression = display.textContent;
+        display.textContent = operation === 'sqrt'
+            ? math.evaluate(`sqrt(${expression})`)
+            : math.evaluate(`(${expression})${operation}`);
+        cursorPos = null;
+    } catch (error) {
+        display.textContent = 'Syntax Error';
+        cursorPos = null;
+    }
 }
 function deleteLast() {
     let text = display.textContent;
-    if (text === 'cos(' || display.textContent === 'sin(' || display.textContent === 'tag(' || display.textContent === 'log(') {
+    if (TRIG_FUNCS.some(f => text === f + ')')) {
         display.textContent = '0';
+        cursorPos = null;
+    } else if (cursorPos !== null && cursorPos > 0) {
+        display.textContent = text.slice(0, cursorPos - 1) + text.slice(cursorPos);
+        cursorPos -= 1;
+        // if display becomes like 'sin()' with nothing inside, reset
+        if (TRIG_FUNCS.some(f => display.textContent === f + ')')) {
+            cursorPos = display.textContent.length - 1;
+        }
     } else if (text.length > 1) {
         display.textContent = text.slice(0, -1);
     } else {
         display.textContent = '0';
+        cursorPos = null;
     }
 }
 function dot() {
-    if (dotClickable) {
+    const currentNumber = display.textContent.split(/[+\-*/%()]/).pop();
+    if (!currentNumber.includes('.')) {
         appendToDisplay('.');
-        dotClickable = false;
     }
 }
 function operator(value) {
-    appendToDisplay(value);
-    dotClickable = true;
+    if (TRIG_FUNCS.includes(value)) {
+        // append like sin() and place cursor before )
+        if (display.textContent === '0' || display.textContent === 'Syntax Error') {
+            display.textContent = value + ')';
+        } else {
+            display.textContent += value + ')';
+        }
+        cursorPos = display.textContent.length - 1;
+    } else {
+        cursorPos = null;
+        appendToDisplay(value);
+    }
 }
 function equal() {
     var userVal = display.textContent;
+    cursorPos = null;
     try {
-        display.textContent = math.evaluate(userVal);
+        let result = math.evaluate(userVal.replace(/log\(/g, 'log10('));
+        display.textContent = parseFloat(result.toFixed(10));
     } catch (error) {
         display.textContent = 'Syntax Error';
     }
 }
 
+// Allow the calculator to be used from a laptop keyboard as well as the buttons.
+document.addEventListener('keydown', function (event) {
+    const key = event.key;
 
+    if (/^\d$/.test(key)) {
+        appendToDisplay(key);
+        return;
+    }
 
+    if (key === '.') {
+        dot();
+        return;
+    }
+
+    if (['+', '-', '*', '/', '%', '(', ')'].includes(key)) {
+        operator(key);
+        return;
+    }
+
+    if (key === 'Enter' || key === '=') {
+        event.preventDefault();
+        equal();
+        return;
+    }
+
+    if (key === 'Backspace') {
+        event.preventDefault();
+        deleteLast();
+        return;
+    }
+
+    if (key === 'Escape' || key.toLowerCase() === 'c') {
+        cancel();
+    }
+});
